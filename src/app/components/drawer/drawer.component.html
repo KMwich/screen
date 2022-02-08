@@ -1,0 +1,8 @@
+<mat-drawer-container>
+  <mat-drawer #drawer [mode]="'over'" [opened]="opened$ | async" (openedChange)="onDrawOpenedChange($event)">
+    <ng-content select="app-side-bar"></ng-content>
+  </mat-drawer>
+  <mat-drawer-content>
+    <ng-content></ng-content>
+  </mat-drawer-content>
+</mat-drawer-container>

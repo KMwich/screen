@@ -1,0 +1,12 @@
+<ng-container *ngIf="stream$ | async as stream; else SELECT_DEVICE">
+  <video
+    #screen
+    [srcObject]="stream"
+    (loadedmetadata)="onLoadedMetadata()"
+    [style.width.px]="(videoWidthHeight$ | async)!.width"
+    [style.height.px]="(videoWidthHeight$ | async)!.height"
+  ></video>
+</ng-container>
+<ng-template #SELECT_DEVICE>
+  <h1 class="no-device">No device select</h1>
+</ng-template>

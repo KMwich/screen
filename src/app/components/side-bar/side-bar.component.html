@@ -1,0 +1,36 @@
+<div>
+  <mat-form-field appearance="standard">
+    <mat-label>Devices</mat-label>
+    <mat-select [(ngModel)]="device">
+      <ng-container *ngFor="let device of devices$ | async">
+        <mat-option [value]="device">
+          {{ device.label }}
+        </mat-option>
+      </ng-container>
+    </mat-select>
+  </mat-form-field>
+</div>
+
+<div>
+  <mat-form-field appearance="standard">
+    <mat-label>Width</mat-label>
+    <input [(ngModel)]="width" matInput type="number" />
+  </mat-form-field>
+</div>
+
+<div>
+  <mat-form-field appearance="standard">
+    <mat-label>Height</mat-label>
+    <input [(ngModel)]="height" matInput type="number" />
+  </mat-form-field>
+</div>
+
+<button mat-raised-button class="apply-button" (click)="apply()">Apply</button>
+
+<h5>History</h5>
+
+<mat-action-list>
+  <ng-container *ngFor="let history of applyHistories$ | async;">
+    <button mat-list-item (click)="applyHistory(history)">{{ history.label }}</button>
+  </ng-container>
+</mat-action-list>

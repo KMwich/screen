@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, HostListener } from '@angular/core';
+import { VideoService } from './services/video.service';
 
 @Component({
   selector: 'app-root',
@@ -7,4 +8,12 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'screen';
+
+  constructor(private videoService: VideoService) {}
+
+  @HostListener('window:resize')
+  onWindowResize() {
+    this.videoService.setScreenWidthHeight();
+  }
+
 }
